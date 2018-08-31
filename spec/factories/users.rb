@@ -7,6 +7,11 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  account_id :integer
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id)
 #
 
 FactoryBot.define do
