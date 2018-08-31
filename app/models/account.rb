@@ -16,6 +16,7 @@
 class Account < ApplicationRecord
 
   belongs_to :user
+  has_many :transactions, dependent: :destroy
 
   validates :balance, presence: true
 end
