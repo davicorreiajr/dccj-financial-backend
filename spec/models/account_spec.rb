@@ -16,6 +16,12 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
+
+  context 'relationships' do
+    it { should belong_to(:user) }
+  end
   
-  it { should validate_presence_of(:balance) }
+  context 'validations' do
+    it { should validate_presence_of(:balance) }
+  end
 end
