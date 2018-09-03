@@ -1,13 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe 'User creation', type: :request do
 
   describe 'POST create' do
-    before do
-      get :create, params: params, as: :json
-    end
 
-    context 'with invalid params' do
+    before do
+      post users_path, params: params, as: :json
     end
 
     context 'with valid params' do
@@ -17,11 +15,8 @@ RSpec.describe UsersController, type: :controller do
         expect_json_and_status('200')
       end
     end
-  end
 
-  describe 'GET show' do
-  end
-
-  describe 'PUT update' do
+    context 'with invalid params' do
+    end
   end
 end
