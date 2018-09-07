@@ -11,12 +11,17 @@ class UsersController < ApplicationController
   end
 
   def show
+    render json: user
   end
 
   def update
   end
 
   private
+
+  def user
+    User.find(params[:id])
+  end
 
   def user_builder
     @user_builder ||= Builders::User.new(create_user_params.to_h)
