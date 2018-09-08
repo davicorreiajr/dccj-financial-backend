@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User creation', type: :request do
-  
   before do
     post users_path, params: params, as: :json
   end
@@ -9,7 +8,7 @@ RSpec.describe 'User creation', type: :request do
   context 'with valid params' do
     let(:name) { 'Davi Cesar' }
     let(:email) { 'davicorreiajr@gmail.com' }
-    let(:params) {{ name: name, email: email }}
+    let(:params) { { name: name, email: email } }
     let(:user) { build(:user, name: name, email: email) }
     let(:builder) { instance_double('Builders::User') }
 
@@ -25,7 +24,7 @@ RSpec.describe 'User creation', type: :request do
   end
 
   context 'with invalid params' do
-    let(:params) {{ name: 'Davi' }}
+    let(:params) { { name: 'Davi' } }
 
     it 'returns a JSON with :unprocessable_entity status' do
       expect_json_and_status(:unprocessable_entity)

@@ -1,26 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe 'User update', type: :request do
-  
   context 'when the :id exists' do
     let(:name) { 'Davi Cesar' }
     let(:email) { 'davicorreiajr@gmail.com' }
     let(:user) { create(:user, name: name, email: email) }
     let(:json) { JSON.parse(response.body) }
-    
+
     before do
       put user_path(user.id), params: params, as: :json
       user.reload
     end
-    
+
     context 'with valid params' do
       let(:new_name) { 'Correia Jr' }
-      let(:params) {{ name: new_name, email: email }}
-      
+      let(:params) { { name: new_name, email: email } }
+
       it 'returns a JSON with :ok status' do
         expect_json_and_status(:ok)
       end
-  
+
       it 'updates the requested user' do
         expect(user.name).to eq(new_name)
       end
@@ -31,7 +30,7 @@ RSpec.describe 'User update', type: :request do
     end
 
     context 'with invalid params' do
-      let(:params) {{ email: nil }}
+      let(:params) { { email: nil } }
 
       it 'returns a JSON with :unprocessable_entity status' do
         expect_json_and_status(:unprocessable_entity)
@@ -40,7 +39,6 @@ RSpec.describe 'User update', type: :request do
   end
 
   context 'when the :id does not exist' do
-
     it 'throws an error' do
       expect do
         put user_path(2), as: :json

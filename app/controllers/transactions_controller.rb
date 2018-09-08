@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-
   def index
     paginate json: transactions
   end

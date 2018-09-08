@@ -14,7 +14,7 @@ RSpec.describe 'Transaction creation', type: :request do
     context 'with valid params' do
       let(:new_value) { rand(-10.0..10.0).round(2) }
       let(:new_description) { 'bleus' }
-      let(:params) {{ value: new_value, description: new_description }}
+      let(:params) { { value: new_value, description: new_description } }
 
       it 'returns a JSON with :ok status' do
         expect_json_and_status(:ok)
@@ -32,7 +32,7 @@ RSpec.describe 'Transaction creation', type: :request do
     end
 
     context 'with invalid params' do
-      let(:params) {{ value: nil, description: 'bleus' }}
+      let(:params) { { value: nil, description: 'bleus' } }
 
       it 'returns a JSON with :unprocessable_entity status' do
         expect_json_and_status(:unprocessable_entity)
@@ -43,7 +43,7 @@ RSpec.describe 'Transaction creation', type: :request do
   context 'when transaction id does not exist' do
     let(:value) { rand(-10.0..10.0).round(2) }
     let(:description) { 'bleus' }
-    let(:params) {{ value: value, description: description }}
+    let(:params) { { value: value, description: description } }
 
     it 'throws an error' do
       expect do

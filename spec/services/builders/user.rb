@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Builders::User', type: :builder do
-  
   describe '#build' do
-    let(:user_params) {{ name: 'Davi', email: 'davicorreiajr@gmail.com' }}
+    let(:user_params) { { name: 'Davi', email: 'davicorreiajr@gmail.com' } }
     let(:subject) { Builders::User.new(user_params) }
     let(:user) { subject.build }
 

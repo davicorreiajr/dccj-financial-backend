@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def create
     user = user_builder.build
 

@@ -17,11 +17,10 @@
 require 'rails_helper'
 
 RSpec.describe Transaction, type: :model do
-
   context 'relationships' do
     it { should belong_to(:account) }
   end
-  
+
   context 'validations' do
     it { should validate_presence_of(:value) }
   end
