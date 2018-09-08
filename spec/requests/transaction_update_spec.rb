@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Transaction creation', type: :request do
-  let(:json) { JSON.parse(response.body) }  
+  let(:json) { JSON.parse(response.body) }
 
   context 'when transaction id exists' do
     let(:transaction) { create(:transaction) }

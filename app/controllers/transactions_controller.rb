@@ -23,6 +23,8 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+    transaction.destroy
+    head :no_content
   end
 
   private
