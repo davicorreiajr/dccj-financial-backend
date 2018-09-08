@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Builders::User
   attr_private_initialize :user_params
 
