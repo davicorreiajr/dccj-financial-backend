@@ -14,7 +14,22 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def update
+    if transaction.update(transaction_params)
+      render json: transaction
+    else
+      render json: transaction.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+  end
+
   private
+
+  def transaction
+    @transaction ||= Transaction.find(params[:id])
+  end
 
   def transactions
     @transactions ||= Transaction.all

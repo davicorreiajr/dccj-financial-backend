@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show, :update]
 
   resources :accounts, only: [:show] do
-    resources :transactions, only: [:index, :create, :update, :destroy]
+    resources :transactions, only: [:index, :create, :update, :destroy], shallow: true
   end
 end
