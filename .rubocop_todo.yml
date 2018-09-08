@@ -23,36 +23,10 @@ Layout/AlignParameters:
     - 'bin/rspec'
 
 # Offense count: 1
-Metrics/AbcSize:
-  Max: 18
-
-# Offense count: 8
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/BlockLength:
-  Max: 72
-
-# Offense count: 1
-Metrics/CyclomaticComplexity:
-  Max: 9
-
-# Offense count: 2
-# Configuration parameters: CountComments.
-Metrics/MethodLength:
-  Max: 13
-
-# Offense count: 1
-Metrics/PerceivedComplexity:
-  Max: 9
-
-# Offense count: 1
 # Cop supports --auto-correct.
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
-
-# Offense count: 23
-Style/Documentation:
-  Enabled: false
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -79,13 +53,6 @@ Style/PerlBackrefs:
   Exclude:
     - 'bin/bundle'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: .
-# SupportedStyles: use_perl_names, use_english_names
-Style/SpecialGlobalVars:
-  EnforcedStyle: use_perl_names
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/StderrPuts:
@@ -109,13 +76,6 @@ Style/StringLiterals:
     - 'spec/rails_helper.rb'
     - 'test/application_system_test_case.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: MinSize.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoredMethods.
@@ -123,9 +83,3 @@ Style/SymbolArray:
 Style/SymbolProc:
   Exclude:
     - 'db/migrate/20180831162732_create_users.rb'
-
-# Offense count: 42
-# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
-# URISchemes: http, https
-Metrics/LineLength:
-  Max: 190
