@@ -16,5 +16,6 @@
 FactoryBot.define do
   factory :account do
     balance { 1 }
+    user
   end
 end

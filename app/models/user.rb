@@ -7,11 +7,10 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :integer          not null
 #
-# Foreign Keys
+# Indexes
 #
-#  fk_rails_...  (account_id => accounts.id)
+#  index_users_on_email  (email) UNIQUE
 #
 
 class User < ApplicationRecord
@@ -20,4 +19,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+  validates_uniqueness_of :email
 end

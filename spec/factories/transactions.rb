@@ -16,7 +16,8 @@
 
 FactoryBot.define do
   factory :transaction do
-    value { 1.5 }
+    sequence(:value) { |n| n * rand(-10.0..10.0).round(2) }
     description { "mochilão" }
+    account
   end
 end

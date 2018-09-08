@@ -7,16 +7,15 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :integer          not null
 #
-# Foreign Keys
+# Indexes
 #
-#  fk_rails_...  (account_id => accounts.id)
+#  index_users_on_email  (email) UNIQUE
 #
 
 FactoryBot.define do
   factory :user do
     name { 'Davi Correia Jr.' }
-    email { 'davicorreiajr@gmail.com' }
+    sequence(:email) { |n| "test#{n}@email.com" }
   end
 end
