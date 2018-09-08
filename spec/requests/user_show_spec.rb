@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User show', type: :request do
   let(:name) { 'Davi Cesar' }
   let(:email) { 'davicorreiajr@gmail.com' }
-  let(:user) { User.create(name: name, email: email) }
+  let(:user) { create(:user, name: name, email: email) }
   let(:json) { JSON.parse(response.body) }
   
   context 'when the :id exists' do

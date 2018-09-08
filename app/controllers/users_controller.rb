@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if user.update(user_params)
+      render json: user
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -24,10 +29,10 @@ class UsersController < ApplicationController
   end
 
   def user_builder
-    @user_builder ||= Builders::User.new(create_user_params.to_h)
+    @user_builder ||= Builders::User.new(user_params.to_h)
   end
 
-  def create_user_params
+  def user_params
     params.require(:user).permit(:name, :email)
   end
 end
