@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: transactions
@@ -17,7 +19,7 @@
 FactoryBot.define do
   factory :transaction do
     sequence(:value) { |n| n * rand(-10.0..10.0).round(2) }
-    description { "mochilão" }
+    description { 'mochilão' }
     account
   end
 end

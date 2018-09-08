@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: accounts
@@ -16,12 +18,11 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-
   context 'relationships' do
     it { should belong_to(:user) }
     it { should have_many(:transactions).dependent(:destroy) }
   end
-  
+
   context 'validations' do
     it { should validate_presence_of(:balance) }
   end

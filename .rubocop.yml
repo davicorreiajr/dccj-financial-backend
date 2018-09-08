@@ -1,0 +1,54 @@
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+    - lib/**/*.rake
+    - Gemfile
+    - '**/*.rb'
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'test/**/*'
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Metrics/LineLength:
+  Max: 190
+
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 1
+Metrics/AbcSize:
+  Max: 18
+
+# Offense count: 8
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 72
+
+# Offense count: 1
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+# Offense count: 2
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 13
+
+# Offense count: 1
+Metrics/PerceivedComplexity:
+  Max: 9

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Transaction index', type: :request do
@@ -6,8 +8,8 @@ RSpec.describe 'Transaction index', type: :request do
   let!(:transactions) { create_list(:transaction, 30, account: account) }
   let(:page) { 2 }
   let(:per_page) { 10 }
-  let(:params) {{ page: page, per_page: per_page }}
-  let(:gotten_ids) { json.map{ |item| item['id']} }
+  let(:params) { { page: page, per_page: per_page } }
+  let(:gotten_ids) { json.map { |item| item['id'] } }
   let(:expected_ids) { Transaction.page(page).per(per_page).map(&:id) }
 
   before do

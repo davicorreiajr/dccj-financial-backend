@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -16,7 +18,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
   context 'relationships' do
     it { should have_one(:account).dependent(:destroy) }
   end

@@ -1,5 +1,6 @@
-class TransactionsController < ApplicationController
+# frozen_string_literal: true
 
+class TransactionsController < ApplicationController
   def index
     paginate json: transactions
   end
