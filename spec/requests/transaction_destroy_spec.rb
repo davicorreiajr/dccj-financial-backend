@@ -11,9 +11,9 @@ RSpec.describe 'Transaction destroy', type: :request do
     end
 
     it 'deletes the Transaction' do
-      expect {
+      expect do
         delete transaction_path(transactions.first.id), as: :json
-      }.to change(Transaction, :count).by(-1)
+      end.to change(Transaction, :count).by(-1)
     end
   end
 

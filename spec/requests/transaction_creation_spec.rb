@@ -20,9 +20,9 @@ RSpec.describe 'Transaction creation', type: :request do
       end
 
       it 'creates a Transaction' do
-        expect {
+        expect do
           post account_transactions_path(account.id), params: params, as: :json
-        }.to change(Transaction, :count).by(1)
+        end.to change(Transaction, :count).by(1)
       end
 
       it 'returns an object with the params sent' do
