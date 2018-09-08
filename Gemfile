@@ -40,6 +40,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'api-pagination'
 gem 'attr_extras'
+gem 'devise'
 gem 'kaminari'
 
 group :development, :test do
