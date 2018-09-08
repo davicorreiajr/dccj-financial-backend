@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User creation', type: :request do
-  let(:user) { User.new(params) }
-  let(:builder) { instance_double('Builders::User') }
   
   before do
     post users_path, params: params, as: :json
@@ -12,6 +10,8 @@ RSpec.describe 'User creation', type: :request do
     let(:name) { 'Davi Cesar' }
     let(:email) { 'davicorreiajr@gmail.com' }
     let(:params) {{ name: name, email: email }}
+    let(:user) { build(:user, name: name, email: email) }
+    let(:builder) { instance_double('Builders::User') }
 
     it 'returns a JSON with :created status' do
       expect_json_and_status(:created)
