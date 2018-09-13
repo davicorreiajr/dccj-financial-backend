@@ -6,7 +6,7 @@ RSpec.describe 'Builders::User', type: :builder do
   describe '#build' do
     let(:name) { 'Davi' }
     let(:email) { 'davicorreiajr@gmail.com' }
-    let(:user_params) {{ name: name, email: email, password: 'bleus123' }}
+    let(:user_params) { { name: name, email: email, password: 'bleus123' } }
     let(:subject) { Builders::User.new(user_params) }
     let(:user) { subject.build }
 

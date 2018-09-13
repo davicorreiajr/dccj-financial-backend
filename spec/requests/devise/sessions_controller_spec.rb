@@ -14,8 +14,8 @@ RSpec.describe 'SessionsController', type: :request do
     end
 
     context 'with valid params' do
-      let(:params) {{ user: { email: user.email, password: password } }}
-      
+      let(:params) { { user: { email: user.email, password: password } } }
+
       it 'returns a JSON with ok status' do
         expect_json_and_status(:ok)
       end
@@ -27,8 +27,8 @@ RSpec.describe 'SessionsController', type: :request do
     end
 
     context 'with invalid params' do
-      let(:params) {{ user: { email: user.email, password: password + '1234' } }}
-      
+      let(:params) { { user: { email: user.email, password: password + '1234' } } }
+
       it 'returns a JSON with unauthorized status' do
         expect_json_and_status(:unauthorized)
       end

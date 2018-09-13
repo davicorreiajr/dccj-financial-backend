@@ -14,7 +14,7 @@ RSpec.describe 'User update', type: :request do
 
     context 'with valid params' do
       let(:new_name) { 'Correia Jr' }
-      let(:params) {{ name: new_name, email: user.email }}
+      let(:params) { { name: new_name, email: user.email } }
 
       it 'returns a JSON with :ok status' do
         expect_json_and_status(:ok)

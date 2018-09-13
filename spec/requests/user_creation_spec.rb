@@ -12,8 +12,8 @@ RSpec.describe 'User creation', type: :request do
   context 'with valid params' do
     let(:name) { 'Davi Cesar' }
     let(:email) { 'davicorreiajr@gmail.com' }
-    let(:user_params) {{ name: name, email: email, password: 'bleus123' }}
-    let(:params) {{ user: user_params }}
+    let(:user_params) { { name: name, email: email, password: 'bleus123' } }
+    let(:params) { { user: user_params } }
     let(:user) { build(:user, name: name, email: email) }
     let(:builder) { instance_double('Builders::User') }
 
