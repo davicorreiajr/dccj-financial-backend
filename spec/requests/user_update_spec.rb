@@ -4,9 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'User update', type: :request do
   context 'when the :id exists' do
-    let(:name) { 'Davi Cesar' }
-    let(:email) { 'davicorreiajr@gmail.com' }
-    let(:user) { create(:user, name: name, email: email) }
+    let(:user) { create(:user) }
     let(:json) { JSON.parse(response.body) }
 
     before do
@@ -16,7 +14,7 @@ RSpec.describe 'User update', type: :request do
 
     context 'with valid params' do
       let(:new_name) { 'Correia Jr' }
-      let(:params) { { name: new_name, email: email } }
+      let(:params) {{ name: new_name, email: user.email }}
 
       it 'returns a JSON with :ok status' do
         expect_json_and_status(:ok)
