@@ -15,7 +15,7 @@ class Builders::User
   end
 
   def user
-    @user ||= ::User.new(name: name, email: email)
+    @user ||= ::User.new(name: name, email: email, password: password)
   end
 
   def name
@@ -24,5 +24,9 @@ class Builders::User
 
   def email
     @email ||= user_params[:email]
+  end
+
+  def password
+    @password ||= user_params[:password]
   end
 end
