@@ -25,5 +25,11 @@ FactoryBot.define do
     name { 'Davi Correia Jr.' }
     sequence(:email) { |n| "test#{n}@email.com" }
     sequence(:password) { |n| "bleus#{n}" }
+
+    trait :with_account do
+      after(:create) do |user|
+        create(:account, user: user)
+      end
+    end
   end
 end

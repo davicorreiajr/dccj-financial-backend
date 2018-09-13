@@ -1,37 +1,14 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :account, :record
 
   def initialize(user, record)
     @user = user
+    @account = user.account
     @record = record
   end
 
-  def index?
-    false
-  end
-
-  def show?
-    false
-  end
-
-  def create?
-    false
-  end
-
-  def new?
-    create?
-  end
-
-  def update?
-    false
-  end
-
-  def edit?
-    update?
-  end
-
-  def destroy?
-    false
+  def user_logged?
+    user
   end
 
   class Scope
