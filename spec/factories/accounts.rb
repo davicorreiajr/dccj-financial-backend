@@ -17,7 +17,7 @@
 
 FactoryBot.define do
   factory :account do
-    balance { 1 }
+    balance { rand(-10.0..10.0).round(2) }
     user
   end
 end

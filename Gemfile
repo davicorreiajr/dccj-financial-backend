@@ -40,7 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'api-pagination'
 gem 'attr_extras'
+gem 'devise'
 gem 'kaminari'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

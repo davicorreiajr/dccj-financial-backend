@@ -2,6 +2,7 @@
 
 class AccountsController < ApplicationController
   def show
+    authorize account
     render json: account
   end
 
