@@ -9,4 +9,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     user_logged? && (user == record)
   end
+
+  def update?
+    user_logged? && (user == record)
+  end
 end

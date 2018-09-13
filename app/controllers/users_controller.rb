@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize user
+
     if user.update(user_params)
       render json: user
     else
