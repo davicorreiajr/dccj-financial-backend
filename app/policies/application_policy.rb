@@ -5,7 +5,7 @@ class ApplicationPolicy
 
   def initialize(user, record)
     @user = user
-    @account = user.account
+    @account = user&.account
     @record = record
   end
 

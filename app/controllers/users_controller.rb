@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   def create
     user = user_builder.build
+    authorize user
 
     if user.save
       render json: user, status: :created
