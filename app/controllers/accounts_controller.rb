@@ -9,6 +9,6 @@ class AccountsController < ApplicationController
   private
 
   def account
-    @account ||= Account.find(params[:id])
+    @account ||= policy_scope(Account).find(params[:id])
   end
 end
