@@ -13,7 +13,7 @@ RSpec.describe TransactionPolicy, type: :policy do
     let(:user) { nil }
     let(:transaction) { create(:transaction) }
 
-    it { is_expected.to forbid_actions(%i[index create update destroy]) }
+    it { is_expected.to forbid_actions([:index, :create, :update, :destroy]) }
   end
 
   context 'when user is logged' do
@@ -25,7 +25,7 @@ RSpec.describe TransactionPolicy, type: :policy do
     it { is_expected.to permit_action(:index) }
 
     context 'when accessing transaction from the logged user' do
-      it { is_expected.to permit_actions(%i[create update destroy]) }
+      it { is_expected.to permit_actions([:create, :update, :destroy]) }
 
       it 'includes transaction in resolved scope' do
         expect(resolved_scope).to include(transaction)
@@ -35,7 +35,7 @@ RSpec.describe TransactionPolicy, type: :policy do
     context 'when accessing transaction from another user' do
       let(:transaction) { create(:transaction) }
 
-      it { is_expected.to forbid_actions(%i[create update destroy]) }
+      it { is_expected.to forbid_actions([:create, :update, :destroy]) }
 
       it 'excludes transaction from resolved scope' do
         expect(resolved_scope).not_to include(transaction)

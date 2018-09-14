@@ -73,8 +73,8 @@ group :test do
   gem 'chromedriver-helper'
 
   gem 'database_cleaner', '~> 1.5'
-  gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'pundit-matchers', '~> 1.6.0'
+  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

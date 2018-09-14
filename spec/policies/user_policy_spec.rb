@@ -9,7 +9,7 @@ RSpec.describe UserPolicy, type: :policy do
     let(:current_user) { nil }
     let(:user) { nil }
 
-    it { is_expected.to forbid_actions(%i[show update]) }
+    it { is_expected.to forbid_actions([:show, :update]) }
     it { is_expected.to permit_action(:create) }
   end
 
@@ -22,13 +22,13 @@ RSpec.describe UserPolicy, type: :policy do
     context 'when accessing the logged user' do
       let(:user) { current_user }
 
-      it { is_expected.to permit_actions(%i[show update]) }
+      it { is_expected.to permit_actions([:show, :update]) }
     end
 
     context 'when accessing another user' do
       let(:user) { create(:user) }
 
-      it { is_expected.to forbid_actions(%i[show update]) }
+      it { is_expected.to forbid_actions([:show, :update]) }
     end
   end
 end
