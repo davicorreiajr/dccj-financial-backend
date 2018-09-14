@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   def create
     user = user_builder.build
+    authorize user
 
     if user.save
       render json: user, status: :created
@@ -12,10 +13,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    authorize user
     render json: user
   end
 
   def update
+    authorize user
+
     if user.update(user_params)
       render json: user
     else
@@ -26,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def user
-    @user ||= User.find(params[:id])
+    @user ||= policy_scope(User).find(params[:id])
   end
 
   def user_builder

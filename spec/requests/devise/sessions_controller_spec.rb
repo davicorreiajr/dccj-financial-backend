@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'SessionsController', type: :request do
+RSpec.describe Users::SessionsController, type: :request do
   let(:json) { JSON.parse(response.body) }
 
   describe '#sign in' do

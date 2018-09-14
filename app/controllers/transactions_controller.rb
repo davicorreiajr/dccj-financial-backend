@@ -2,11 +2,13 @@
 
 class TransactionsController < ApplicationController
   def index
+    authorize Transaction
     paginate json: transactions
   end
 
   def create
     transaction = account.transactions.build(transaction_params)
+    authorize transaction
 
     if transaction.save
       render json: transaction, status: :created
@@ -16,6 +18,8 @@ class TransactionsController < ApplicationController
   end
 
   def update
+    authorize transaction
+
     if transaction.update(transaction_params)
       render json: transaction
     else
@@ -24,6 +28,8 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+    authorize transaction
+
     transaction.destroy
     head :no_content
   end
@@ -31,11 +37,11 @@ class TransactionsController < ApplicationController
   private
 
   def transaction
-    @transaction ||= Transaction.find(params[:id])
+    @transaction ||= policy_scope(Transaction).find(params[:id])
   end
 
   def transactions
-    @transactions ||= Transaction.all
+    @transactions ||= policy_scope(Transaction).with_account(account)
   end
 
   def account
