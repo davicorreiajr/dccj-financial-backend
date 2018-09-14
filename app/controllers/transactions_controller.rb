@@ -18,6 +18,8 @@ class TransactionsController < ApplicationController
   end
 
   def update
+    authorize transaction
+
     if transaction.update(transaction_params)
       render json: transaction
     else
@@ -33,7 +35,7 @@ class TransactionsController < ApplicationController
   private
 
   def transaction
-    @transaction ||= Transaction.find(params[:id])
+    @transaction ||= policy_scope(Transaction).find(params[:id])
   end
 
   def transactions

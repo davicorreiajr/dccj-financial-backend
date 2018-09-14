@@ -10,6 +10,10 @@ class TransactionPolicy < ApplicationPolicy
     user_logged? and record.account == account
   end
 
+  def update?
+    user_logged? and record.account == account
+  end
+
   class Scope < Scope
 
     def resolve

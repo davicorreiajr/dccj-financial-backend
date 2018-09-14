@@ -4,9 +4,15 @@ require 'rails_helper'
 
 RSpec.describe 'Transaction creation', type: :request do
   let(:json) { JSON.parse(response.body) }
+  let(:user) { create(:user, :with_account) }
+  let(:account) { user.account }
 
-  context 'when transaction id exists' do
-    let(:transaction) { create(:transaction) }
+  before do
+    sign_in user
+  end
+
+  context 'when transaction id exists and belongs to the logged user' do
+    let(:transaction) { create(:transaction, account: account) }
 
     before do
       put transaction_path(transaction.id), params: params, as: :json
@@ -39,6 +45,19 @@ RSpec.describe 'Transaction creation', type: :request do
       it 'returns a JSON with :unprocessable_entity status' do
         expect_json_and_status(:unprocessable_entity)
       end
+    end
+  end
+
+  context 'when transaction id exists but does not belong to the logged user' do
+    let(:another_transaction) { create(:transaction) }
+    let(:new_value) { rand(-10.0..10.0).round(2) }
+    let(:new_description) { 'bleus' }
+    let(:params) { { value: new_value, description: new_description } }
+
+    it 'throws an error' do
+      expect do
+        put transaction_path(another_transaction.id), params: params, as: :json
+      end.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
