@@ -2,7 +2,7 @@
 
 class UserPolicy < ApplicationPolicy
   def create?
-    true
+    !user_logged?
   end
 
   def show?
