@@ -2,6 +2,7 @@
 
 class TransactionsController < ApplicationController
   def index
+    authorize Transaction
     paginate json: transactions
   end
 
@@ -36,7 +37,7 @@ class TransactionsController < ApplicationController
   end
 
   def transactions
-    @transactions ||= Transaction.all
+    @transactions ||= policy_scope(Transaction)
   end
 
   def account

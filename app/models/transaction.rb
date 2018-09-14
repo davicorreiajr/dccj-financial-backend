@@ -20,4 +20,6 @@ class Transaction < ApplicationRecord
   belongs_to :account
 
   validates :value, presence: true
+
+  scope :with_account, ->(account) { where(account: account) }
 end

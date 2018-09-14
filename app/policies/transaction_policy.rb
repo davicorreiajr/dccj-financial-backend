@@ -2,6 +2,10 @@
 
 class TransactionPolicy < ApplicationPolicy
 
+  def index?
+    user_logged?
+  end
+  
   def create?
     user_logged? and record.account == account
   end
