@@ -28,6 +28,8 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+    authorize transaction
+
     transaction.destroy
     head :no_content
   end
