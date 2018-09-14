@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
-  
   def update
     skip_policy_scope
     authorize current_user, policy_class: Devise::PasswordPolicy
