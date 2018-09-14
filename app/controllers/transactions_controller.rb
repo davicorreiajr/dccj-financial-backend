@@ -7,6 +7,7 @@ class TransactionsController < ApplicationController
 
   def create
     transaction = account.transactions.build(transaction_params)
+    authorize transaction
 
     if transaction.save
       render json: transaction, status: :created

@@ -4,9 +4,14 @@ require 'rails_helper'
 
 RSpec.describe 'Transaction creation', type: :request do
   let(:json) { JSON.parse(response.body) }
+  let(:user) { create(:user, :with_account) }
 
-  context 'when account id exists' do
-    let(:account) { create(:account) }
+  before do
+    sign_in user
+  end
+
+  context 'when account id exists and belongs to the logged user' do
+    let(:account) { user.account }
 
     before do
       post account_transactions_path(account.id), params: params, as: :json
@@ -39,6 +44,19 @@ RSpec.describe 'Transaction creation', type: :request do
       it 'returns a JSON with :unprocessable_entity status' do
         expect_json_and_status(:unprocessable_entity)
       end
+    end
+  end
+
+  context 'when account id exists and belongs to another user' do
+    let(:another_account) { create(:account) }
+    let(:value) { rand(-10.0..10.0).round(2) }
+    let(:description) { 'bleus' }
+    let(:params) { { value: value, description: description } }
+
+    it 'throws an error' do
+      expect do
+        post account_transactions_path(another_account.id), params: params, as: :json
+      end.to raise_error(Pundit::NotAuthorizedError)
     end
   end
 
