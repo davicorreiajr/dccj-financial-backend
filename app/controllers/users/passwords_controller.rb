@@ -1,34 +1,25 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
-  # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  
+  def update
+    skip_policy_scope
+    authorize current_user, policy_class: Devise::PasswordPolicy
 
-  # POST /resource/password
-  # def create
-  #   super
-  # end
+    if current_user.reset_password(password, password_confirmation)
+      head :no_content
+    else
+      render json: current_user.errors, status: :unprocessable_entity
+    end
+  end
 
-  # GET /resource/password/edit?reset_password_token=abcdef
-  # def edit
-  #   super
-  # end
+  private
 
-  # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def password
+    @password ||= params[:password]
+  end
 
-  # protected
-
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sending reset password instructions
-  # def after_sending_reset_password_instructions_path_for(resource_name)
-  #   super(resource_name)
-  # end
+  def password_confirmation
+    @password_confirmation ||= params[:password_confirmation]
+  end
 end
