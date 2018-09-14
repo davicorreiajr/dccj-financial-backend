@@ -1,26 +1,33 @@
+# dccj-financial-backend
 [![Build Status](https://travis-ci.org/davicorreiajr/dccj-financial-backend.svg?branch=master)](https://travis-ci.org/davicorreiajr/dccj-financial-backend)
 
-# README
+This is the backend of my a personal project, whose target is to create an app where the user controls his/her finances. It's a Ruby on Rails project, but works only as an API.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running
 
-Things you may want to cover:
+First, clone the repo:
+```
+git clone https://github.com/davicorreiajr/dccj-financial-backend.git
+cd dccj-financial-backend
+```
 
-* Ruby version
+Then, install the dependencies:
+```
+bundle install
+```
 
-* System dependencies
+And finally, start the server:
+```
+rails server
+```
 
-* Configuration
+## Tests
 
-* Database creation
+I used RSpec for this project, so just run:
+```
+bundle exec rspec
+```
 
-* Database initialization
+## Troubles & sugestions
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Please, if you find any problem or have some sugestion, don't hesitate to open an issue or even a pull request.
