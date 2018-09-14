@@ -19,15 +19,14 @@ RSpec.describe 'Transaction index', type: :request do
   end
 
   context "when requesting transactions from the logged user's account" do
-
     it 'returns a JSON with :ok status' do
       expect_json_and_status(:ok)
     end
-  
+
     it 'returns an array' do
       expect(json).to be_an(Array)
     end
-  
+
     it 'returns the transactions of the correct page' do
       expect(gotten_ids).to match_array(expected_ids)
     end
