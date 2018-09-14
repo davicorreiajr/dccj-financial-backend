@@ -32,4 +32,13 @@ RSpec.describe 'Transaction index', type: :request do
       expect(gotten_ids).to match_array(expected_ids)
     end
   end
+
+  context "when requesting transactions from another user's account" do
+    let(:account) { create(:account) }
+    let!(:another_transactions) { create_list(:transaction, 30, account: account) }
+
+    it 'returns an empty array' do
+      expect(json).to be_empty
+    end
+  end
 end

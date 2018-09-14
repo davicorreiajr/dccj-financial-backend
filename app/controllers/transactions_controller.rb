@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
   end
 
   def transactions
-    @transactions ||= policy_scope(Transaction)
+    @transactions ||= policy_scope(Transaction).with_account(account)
   end
 
   def account
